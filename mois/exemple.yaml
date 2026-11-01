@@ -1,0 +1,25 @@
+# Exemple de saisie mensuelle (valeurs fictives).
+# Les vrais fichiers mois/AAAA-MM.yaml ne sont pas versionnés.
+#   python main.py calcul mois/exemple.yaml
+mois: "2026-11"
+
+# Jours travaillés sur site (facturés + indemnités km).
+# Format : "2-6,9,10" ou liste [2, 3, 4]
+jours_travailles: "2-6,9-10,12-13,16-20,23-27,30"
+
+# Charges mixtes : seulement ce qui CHANGE par rapport à config.yaml.
+#   montant seul          -> taux habituel conservé
+#   {taux}                -> montant habituel conservé
+#   {montant, taux}       -> les deux remplacés
+#   0                     -> pas de charge ce mois-ci
+charges_mixtes:
+  EDF/GDF: 72.40
+  TELEPHONE: { montant: 19.99, taux: 75 }
+  INTERNET: 0
+
+# Dépenses ponctuelles (repas, parking, péage, matériel…).
+# compte : personnel (remboursé dans la note) ou pro (payé avec la carte pro)
+# tva : facultatif (taux habituel du type sinon)
+depenses:
+  - { type: REPAS GERANT SEUL, date: 14, ttc: 18.50, libelle: "Déjeuner", compte: personnel }
+  - { type: PARKING, date: 2026-11-20, ttc: 12.00, compte: pro }

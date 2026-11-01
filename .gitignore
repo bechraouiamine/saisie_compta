@@ -1,0 +1,20 @@
+# Environnement
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+.idea/
+
+# Données personnelles : jamais versionnées
+config.yaml
+mois/*.yaml
+!mois/exemple.yaml
+CLAUDE.local.md
+
+# Captures réseau : contiennent le mot de passe en clair (account/Login)
+*.har
+captures/
+
+# Session CRM (normalement dans ~/.saisie_compta/, par sécurité)
+session.json

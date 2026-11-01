@@ -1,0 +1,39 @@
+# =====================================================================
+#  Paramètres FIXES — à modifier rarement (changement de TJM, de client…)
+#  Copier ce fichier en config.yaml (non versionné) puis le renseigner.
+#  Les saisies du mois se font dans mois/AAAA-MM.yaml
+# =====================================================================
+
+crm:
+  url_app: "https://decisiel-crmclient.fr"
+  url_api: "https://api.decisiel-crmclient.fr/api/v1.0"
+  societe_id: 12345            # CompanyId de ta société (visible dans les appels API)
+  tva_intracom: "FR00123456789"
+
+facture:
+  client_id: 100               # ClientId du client dans le CRM
+  client_nom: "CLIENT SAS"
+  compte_bancaire_id: 10       # BankAccountId
+  intitule: "Prestation de développement"
+  tjm_ht: 500
+  tva: 20
+  delai_paiement: "Days30"
+  mode_paiement: "PayoutSepa"
+
+# Charges mixtes reprises CHAQUE mois, sauf si le fichier du mois les modifie.
+# Les noms doivent correspondre aux types du CRM (saisie/catalogue.py).
+charges_mixtes_par_defaut:
+  LOYERS:   { montant: 800.00, taux: 20 }
+  INTERNET: { montant: 29.99,  taux: 75 }
+  EDF/GDF:  { montant: 60.00,  taux: 20 }
+
+kilometrique:
+  vehicule: "Voiture Thermique, hybride et hybride rechargeable"
+  puissance: "7 CV et plus"
+  trajet: "Domicile / Client"
+  client: "CLIENT"
+  distance_km: 40              # aller-retour par jour travaillé
+  # Barème fiscal 7 CV et plus, 5 001 à 20 000 km/an : d x 0,394 + 1 515 €/an
+  # (sert seulement à l'estimation affichée ; le CRM fait son propre calcul)
+  bareme_coef: 0.394
+  bareme_fixe_annuel: 1515
